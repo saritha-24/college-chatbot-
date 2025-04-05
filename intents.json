@@ -14,7 +14,23 @@
         "tag": "admission",
         "patterns": ["How to apply?", "Admission process?", "How can I get admission?"],
         "responses": ["You can apply online through our college website."]
-      }
+      },
+      {
+        "tag": "fees",
+        "patterns": ["What is the fee structure?", "How much are the course fees?", "Tuition fee details?"],
+        "responses": ["Fees vary by course. Please check the fee section on our official website."]
+      },
+      {
+        "tag": "hostel",
+        "patterns": ["Is hostel available?", "Do you provide hostel?", "Hostel facilities?"],
+        "responses": ["Yes, separate hostel facilities are available for boys and girls."]
+      },
+      {
+        "tag": "placements",
+        "patterns": ["What about placements?", "Do you provide campus placements?", "Placement records?"],
+        "responses": ["We have a strong placement cell with companies like TCS, Infosys, and Wipro hiring our students."]
+      }      
+
     ]
   }
   

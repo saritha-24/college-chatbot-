@@ -2,36 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>College Chatbot</title>
-  <style>
-    body { font-family: Arial; background: #f0f0f0; padding: 20px; }
-    #chatbox { width: 100%; max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; }
-    .msg { margin: 10px 0; }
-    .user { text-align: right; color: blue; }
-    .bot { text-align: left; color: green; }
-  </style>
+  <title>College Enquiry Chatbot</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-  <div id="chatbox">
-    <h2>College Enquiry Chatbot</h2>
-    <div id="messages"></div>
-    <input type="text" id="userInput" placeholder="Type your message here..." style="width: 80%;">
-    <button onclick="sendMessage()">Send</button>
+<body class="bg-light">
+  <div class="container py-5">
+    <div class="card shadow-lg">
+      <div class="card-body">
+        <h2 class="card-title text-center mb-4">🎓 College Chatbot</h2>
+        <div id="messages" class="mb-3" style="max-height: 400px; overflow-y: auto;"></div>
+        <div class="input-group">
+          <input type="text" id="userInput" class="form-control" placeholder="Type your message...">
+          <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
     function sendMessage() {
       const input = document.getElementById("userInput").value;
-      if (!input) return;
       const msgDiv = document.getElementById("messages");
 
-      msgDiv.innerHTML += `<div class='msg user'>You: ${input}</div>`;
+      if (!input) return;
+
+      msgDiv.innerHTML += `<div class='text-end text-primary mb-2'>You: ${input}</div>`;
 
       fetch(`/get?msg=${encodeURIComponent(input)}`)
         .then(res => res.json())
         .then(data => {
-          msgDiv.innerHTML += `<div class='msg bot'>Bot: ${data.reply}</div>`;
+          msgDiv.innerHTML += `<div class='text-start text-success mb-3'>Bot: ${data.reply}</div>`;
           document.getElementById("userInput").value = "";
+          msgDiv.scrollTop = msgDiv.scrollHeight;
         });
     }
   </script>
