@@ -14,6 +14,22 @@
         <div class="input-group">
           <input type="text" id="userInput" class="form-control" placeholder="Type your message...">
           <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+          <button class="btn btn-secondary mt-2" onclick="startVoice()">🎤 Speak</button>
+          <script>
+            function startVoice() {
+  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+  recognition.lang = 'en-US';
+  recognition.start();
+  recognition.onresult = function(event) {
+    document.getElementById("userInput").value = event.results[0][0].transcript;
+    sendMessage();
+  }
+  msgDiv.innerHTML += `<div class='text-start text-success mb-3'>Bot: ${data.reply}</div>`;
+  msgDiv.innerHTML += `<div class='text-start text-success mb-3'>Bot: <span>${data.reply}</span></div>`;
+  msgDiv.innerHTML += `<div class='text-start text-success mb-3'>Bot: ${data.reply}</div>`;
+
+}
+          </script>
         </div>
       </div>
     </div>

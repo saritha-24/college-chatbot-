@@ -29,7 +29,23 @@
         "tag": "placements",
         "patterns": ["What about placements?", "Do you provide campus placements?", "Placement records?"],
         "responses": ["We have a strong placement cell with companies like TCS, Infosys, and Wipro hiring our students."]
-      }      
+      },
+      {
+        "tag": "infrastructure",
+        "patterns": ["Show college buildings", "campus view", "infrastructure photos"],
+        "responses": [
+          "Here's a look at our beautiful campus:",
+          "<img src='https://example.com/campus.jpg' width='300' alt='College Campus'>"
+        ]
+      },
+      {
+        "tag": "events",
+        "patterns": ["Recent events", "college functions", "cultural fests?"],
+        "responses": [
+          "Our recent cultural fest was a blast!",
+          "<img src='https://example.com/fest.jpg' width='300' alt='College Fest'>"
+        ]
+      }     
 
     ]
   }
