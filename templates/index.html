@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>College Chatbot</title>
+  <style>
+    body { font-family: Arial; background: #f0f0f0; padding: 20px; }
+    #chatbox { width: 100%; max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; }
+    .msg { margin: 10px 0; }
+    .user { text-align: right; color: blue; }
+    .bot { text-align: left; color: green; }
+  </style>
+</head>
+<body>
+  <div id="chatbox">
+    <h2>College Enquiry Chatbot</h2>
+    <div id="messages"></div>
+    <input type="text" id="userInput" placeholder="Type your message here..." style="width: 80%;">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById("userInput").value;
+      if (!input) return;
+      const msgDiv = document.getElementById("messages");
+
+      msgDiv.innerHTML += `<div class='msg user'>You: ${input}</div>`;
+
+      fetch(`/get?msg=${encodeURIComponent(input)}`)
+        .then(res => res.json())
+        .then(data => {
+          msgDiv.innerHTML += `<div class='msg bot'>Bot: ${data.reply}</div>`;
+          document.getElementById("userInput").value = "";
+        });
+    }
+  </script>
+</body>
+</html>
