@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register | College Chatbot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <div class="min-h-screen flex">
+    <!-- Left: Register form -->
+    <div class="w-full md:w-1/2 flex items-center justify-center bg-white p-8">
+      <div class="max-w-md w-full space-y-8">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold text-gray-900">Create Account 📝</h2>
+          <p class="text-sm text-gray-500">Register to get started</p>
+        </div>
+
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div>
+              {% for category, message in messages %}
+                <p class="text-{{ 'green-600' if category == 'success' else 'red-600' }} text-sm font-medium">
+                  {{ message }}
+                </p>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <form class="mt-8 space-y-4" action="/register" method="POST">
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Full Name</label>
+            <input type="text" name="name" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" name="email" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div class="relative">
+            <label class="block text-sm font-medium text-gray-700">Password</label>
+            <input type="password" id="register-password" name="password" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 pr-10" />
+            <button type="button" onclick="togglePassword('register-password', 'register-eye')" class="absolute top-8 right-3">
+              <svg id="register-eye" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+            </button>
+          </div>
+          <div>
+            <button type="submit" class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">
+              Register
+            </button>
+          </div>
+          <p class="text-center text-sm text-gray-500">
+            Already have an account?
+            <a href="/login" class="text-blue-600 hover:underline">Login</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right: Image -->
+    <div class="hidden md:block w-1/2">
+      <img src="/static/campus.jpeg" alt="College" class="w-full h-full object-cover" />
+    </div>
+  </div>
+
+  <script>
+    function togglePassword(inputId, iconId) {
+      const password = document.getElementById(inputId);
+      const icon = document.getElementById(iconId);
+      if (password.type === "password") {
+        password.type = "text";
+      } else {
+        password.type = "password";
+      }
+    }
+  </script>
+</body>
+</html>

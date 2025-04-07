@@ -31,19 +31,27 @@
         "responses": ["We have a strong placement cell with companies like TCS, Infosys, and Wipro hiring our students."]
       },
       {
-        "tag": "infrastructure",
-        "patterns": ["Show college buildings", "campus view", "infrastructure photos"],
+        "tag": "college_logo",
+        "patterns": ["college logo", "show logo", "institution logo"],
         "responses": [
-          "Here's a look at our beautiful campus:",
-          "<img src='https://example.com/campus.jpg' width='300' alt='College Campus'>"
+          "Here is our official college logo:",
+          "<img src='/static/logo.png' width='200' alt='College Logo'>"
         ]
       },
+      {
+        "tag": "campus",
+        "patterns": ["Show me campus", "campus photo"],
+        "responses": [
+          "Here's our campus view!:",
+          "<img src='/static/campus.jpeg' width='300'>"
+        ]
+      },      
       {
         "tag": "events",
         "patterns": ["Recent events", "college functions", "cultural fests?"],
         "responses": [
           "Our recent cultural fest was a blast!",
-          "<img src='https://example.com/fest.jpg' width='300' alt='College Fest'>"
+          "<img src='/static/campus.jpeg' width='300'>"
         ]
       }     
 
