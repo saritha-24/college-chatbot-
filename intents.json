@@ -1,60 +1,136 @@
 {
-    "intents": [
-      {
-        "tag": "greeting",
-        "patterns": ["Hi", "Hello", "Hey", "Good morning"],
-        "responses": ["Hello! How can I help you?"]
-      },
-      {
-        "tag": "courses",
-        "patterns": ["What courses are available?", "List of courses?", "Which programs do you offer?"],
-        "responses": ["We offer B.Tech, M.Tech, MBA, and MCA."]
-      },
-      {
-        "tag": "admission",
-        "patterns": ["How to apply?", "Admission process?", "How can I get admission?"],
-        "responses": ["You can apply online through our college website."]
-      },
-      {
-        "tag": "fees",
-        "patterns": ["What is the fee structure?", "How much are the course fees?", "Tuition fee details?"],
-        "responses": ["Fees vary by course. Please check the fee section on our official website."]
-      },
-      {
-        "tag": "hostel",
-        "patterns": ["Is hostel available?", "Do you provide hostel?", "Hostel facilities?"],
-        "responses": ["Yes, separate hostel facilities are available for boys and girls."]
-      },
-      {
-        "tag": "placements",
-        "patterns": ["What about placements?", "Do you provide campus placements?", "Placement records?"],
-        "responses": ["We have a strong placement cell with companies like TCS, Infosys, and Wipro hiring our students."]
-      },
-      {
-        "tag": "college_logo",
-        "patterns": ["college logo", "show logo", "institution logo"],
-        "responses": [
-          "Here is our official college logo:",
-          "<img src='/static/logo.png' width='200' alt='College Logo'>"
-        ]
-      },
-      {
-        "tag": "campus",
-        "patterns": ["Show me campus", "campus photo"],
-        "responses": [
-          "Here's our campus view!:",
-          "<img src='/static/campus.jpeg' width='300'>"
-        ]
-      },      
-      {
-        "tag": "events",
-        "patterns": ["Recent events", "college functions", "cultural fests?"],
-        "responses": [
-          "Our recent cultural fest was a blast!",
-          "<img src='/static/campus.jpeg' width='300'>"
-        ]
-      }     
-
-    ]
-  }
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hi", "Hello", "Hey", "Good morning"],
+      "responses": [
+        "Hello! How can I assist you today? Whether you need information about courses, admissions, or campus life, I'm here to help. Feel free to ask anything you'd like!"
+      ]
+    },
+    {
+      "tag": "courses",
+      "patterns": ["What courses are available?", "List of courses?", "Which programs do you offer?"],
+      "responses": [
+        "We offer a wide range of courses to cater to different interests and career paths. Our programs include B.Tech, M.Tech, MBA, and MCA, each with various specializations. For more detailed information about each course, please visit the course catalog on our official website."
   
+      ]
+    },
+    {
+      "tag": "admission",
+      "patterns": ["How to apply?", "Admission process?", "How can I get admission?"],
+      "responses": [
+        "To apply for admission, you need to visit our college website and fill out the online application form. The process typically involves submitting your academic records, appearing for an entrance exam (if applicable), and participating in a counseling session. Visit our admissions page for step-by-step guidance.",
+        "<img src='/static/admission_form.jpeg' width='300' alt='Admission Form'>",
+        "<img src='/static/admission_guidelines.jpeg' width='300' alt='Admission Guidelines'>"
+      ]
+    },
+    {
+      "tag": "fees",
+      "patterns": ["What is the fee structure?", "How much are the course fees?", "Tuition fee details?"],
+      "responses": [
+        "The fees for each program vary based on the course level and specialization. For B.Tech, the fee structure is different from MBA or M.Tech. To get the exact details, please visit the fee section of our website or contact the admission office for a breakdown of the costs.",
+        "<img src='/static/fee_structure.jpeg' width='300' alt='Fee Structure'>",
+        "<img src='/static/tuition_fees.jpeg' width='300' alt='Tuition Fees'>"
+      ]
+    },
+    {
+      "tag": "hostel",
+      "patterns": ["Is hostel available?", "Do you provide hostel?", "Hostel facilities?"],
+      "responses": [
+        "Yes, we provide separate hostel facilities for both boys and girls. Our hostels are equipped with all necessary amenities including Wi-Fi, laundry services, 24/7 security, and common rooms. You can also find recreational areas for relaxation and socializing. For more details, please visit the hostel information section on our website.",
+        "<img src='/static/boys-hostel.jpeg' width='300' alt='Boys Hostel'>",
+        "<img src='/static/girls-hostel.jpeg' width='300' alt='Girls Hostel'>"
+      ]
+    },
+    {
+      "tag": "placements",
+      "patterns": ["What about placements?", "Do you provide campus placements?", "Placement records?"],
+      "responses": [
+        "Our college has a strong and dedicated placement cell that works year-round to help students secure positions in leading companies. We have a great record, with companies like TCS, Infosys, Wipro, and Deloitte actively hiring from our campus. We also offer training and mock interviews to help you prepare.",
+        "<img src='/static/placements.png' width='300' alt='Placements'>",
+        "<img src='/static/interviews.png' width='300' alt='Campus Interviews'>"
+      ]
+    },
+    {
+      "tag": "college_logo",
+      "patterns": ["college logo", "show logo", "institution logo"],
+      "responses": [
+        "Here is our official college logo. It represents the strength, knowledge, and heritage of our institution. You can use this logo in official documents or as part of your college-related work.",
+        "<img src='/static/logo.png' width='200' alt='College Logo'>",
+        "<img src='/static/official_logo_blue.png' width='200' alt='Official College Logo Blue'>"
+      ]
+    },
+    {
+      "tag": "campus",
+      "patterns": ["Show me campus", "campus photo"],
+      "responses": [
+        "Here's a glimpse of our beautiful campus. From lush green lawns to modern academic buildings, our campus offers an inspiring environment for learning and growth. Take a virtual tour and explore the different parts of our campus.",
+        "<img src='/static/campus.jpeg' width='300' alt='Campus View 1'>",
+        "<img src='/static/ciet.png' width='300' alt='Campus View 2'>"
+      ]
+    },
+    {
+      "tag": "events",
+      "patterns": ["Recent events", "college functions", "cultural fests?"],
+      "responses": [
+        "Our recent cultural fest was a huge success, with vibrant performances, interactive workshops, and a variety of fun activities. We host events like cultural fests, tech symposiums, and guest lectures throughout the year. Stay tuned to our event calendar for more details.",
+        "<img src='/static/cultural_fest.jpeg' width='300' alt='Cultural Fest'>",
+        "<img src='/static/tech_symposium.jpeg' width='300' alt='Tech Symposium'>"
+      ]
+    },
+    {
+      "tag": "library",
+      "patterns": ["Is there a library?", "Library facilities?", "How can I access the library?"],
+      "responses": [
+        "Yes, our college library is a hub for learning, equipped with a vast collection of books, research papers, journals, and e-resources. Students can access the library facilities during working hours. Additionally, we provide an online portal for remote access to various digital resources.",
+        "<img src='/static/library_interior.jpeg' width='300' alt='Library Interior'>",
+        "<img src='/static/library_books.jpeg' width='300' alt='Library Books'>"
+      ]
+    },
+    {
+      "tag": "sports_facilities",
+      "patterns": ["Do you have sports facilities?", "What sports can I play?", "Sports infrastructure?"],
+      "responses": [
+        "Our college boasts excellent sports facilities, including football fields, basketball courts, tennis courts, and an athletics track. We encourage students to stay active and participate in sports activities for both health and recreation. Additionally, we host annual sports meets where students can showcase their athletic skills.",
+        "<img src='/static/sports_field.jpeg' width='300' alt='Sports Field'>",
+        "<img src='/static/tennis_court.jpeg' width='300' alt='Tennis Court'>"
+      ]
+    },
+    {
+      "tag": "scholarships",
+      "patterns": ["Are there any scholarships?", "How can I apply for scholarships?", "Scholarship details?"],
+      "responses": [
+        "We offer several scholarships for deserving students based on merit, financial need, and academic achievements. Our scholarship programs include full and partial fee waivers. To apply, you can visit our scholarship portal, where you will find all the information and eligibility criteria for each scholarship.",
+        "<img src='/static/scholarships.jpeg' width='300' alt='Scholarships'>",
+        "<img src='/static/merit_scholarship.jpeg' width='300' alt='Merit Scholarship'>"
+      ]
+    },
+    {
+      "tag": "cafeteria",
+      "patterns": ["Is there a cafeteria?", "What food is available?", "Can I get snacks?"],
+      "responses": [
+        "Yes, we have a spacious and modern cafeteria that serves a variety of food options including vegetarian and non-vegetarian meals, snacks, and beverages. The cafeteria is a popular spot for students to relax, socialize, and grab a quick bite between classes.",
+        "<img src='/static/cafeteria_interior.jpeg' width='300' alt='Cafeteria Interior'>",
+        "<img src='/static/food_items.jpeg' width='300' alt='Food Items'>"
+      ]
+    },
+    {
+      "tag": "transportation",
+      "patterns": ["Is transportation available?", "How do I commute to college?", "Transport facilities?"],
+      "responses": [
+        "Yes, we provide reliable transportation services for students. Our buses cover various routes across the city, ensuring easy access to the campus from different locations. The buses run on a fixed schedule, and we also provide details about the transport routes on the college website.",
+        "<img src='/static/bus_transport.jpeg' width='300' alt='Bus Transport'>",
+        "<img src='/static/transport_schedule.jpeg' width='300' alt='Transport Schedule'>"
+      ]
+    },
+    {
+      "tag": "student_life",
+      "patterns": ["What is student life like?", "Life on campus?", "What activities can students participate in?"],
+      "responses": [
+        "Student life at our college is vibrant and full of opportunities. Students can participate in a range of extracurricular activities such as cultural events, sports competitions, and technical workshops. We also have numerous clubs and societies focused on different interests, from photography to entrepreneurship.",
+        "<img src='/static/student_life1.jpeg' width='300' alt='Student Life 1'>",
+        "<img src='/static/student_life2.jpeg' width='300' alt='Student Life 2'>"
+      ]
+    }
+  ]
+}
