@@ -14,7 +14,7 @@ nltk.download('wordnet')
 
 lemmatizer = WordNetLemmatizer()
 
-# Load the intents
+# Load the inten
 with open('intents.json') as file:
     data = json.load(file)
 

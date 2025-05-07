@@ -11,7 +11,7 @@
     
     <!-- Left: College Image -->
     <div class="md:w-1/2 w-full h-64 md:h-full bg-gray-200 flex items-center justify-center">
-      <img src="/static/ciet..png" alt="College Campus" class="w-full h-full object-cover">
+      <img src="/static/ciet.png" alt="College Campus" class="w-full h-full object-cover">
     </div>
 
     <!-- Right: Chatbot -->
@@ -54,35 +54,64 @@
   </div>
 
   <script>
-    function addMessage(message, sender = "bot") {
+    function addMessage(messageContent, sender = "bot") {
       const chatBox = document.getElementById("chatBox");
-      const messageDiv = document.createElement("div");
-      const baseClasses = "px-4 py-2 rounded-xl max-w-[75%]";
-
-      if (sender === "user") {
-        messageDiv.className = baseClasses + " bg-blue-500 text-white ml-auto text-right";
+      
+      if (Array.isArray(messageContent)) {
+        messageContent.forEach(message => {
+          const messageDiv = document.createElement("div");
+          const baseClasses = "px-4 py-2 rounded-xl max-w-[75%] mb-2";
+  
+          if (sender === "user") {
+            messageDiv.className = baseClasses + " bg-blue-500 text-white ml-auto text-right";
+          } else {
+            messageDiv.className = baseClasses + " bg-gray-200 text-black";
+          }
+  
+          messageDiv.innerHTML = message;
+          chatBox.appendChild(messageDiv);
+        });
       } else {
-        messageDiv.className = baseClasses + " bg-gray-200 text-black";
+        const messageDiv = document.createElement("div");
+        const baseClasses = "px-4 py-2 rounded-xl max-w-[75%] mb-2";
+  
+        if (sender === "user") {
+          messageDiv.className = baseClasses + " bg-blue-500 text-white ml-auto text-right";
+        } else {
+          messageDiv.className = baseClasses + " bg-gray-200 text-black";
+        }
+  
+        messageDiv.innerHTML = messageContent;
+        chatBox.appendChild(messageDiv);
       }
-
-      messageDiv.innerHTML = message;
-      chatBox.appendChild(messageDiv);
+  
       chatBox.scrollTop = chatBox.scrollHeight;
     }
-
+  
     function sendMessage() {
       const input = document.getElementById("userInput");
       const text = input.value.trim();
       if (!text) return;
-
+  
       addMessage(text, "user");
       input.value = "";
-
+  
       fetch(`/get?msg=${encodeURIComponent(text)}`)
         .then(res => res.json())
-        .then(data => addMessage(data.reply, "bot"));
+        .then(data => {
+          if (data.responses) {
+            addMessage(data.responses, "bot");
+          } else if (data.reply) {
+            addMessage(data.reply, "bot");
+          } else {
+            addMessage("⚠️ Unexpected response from server.", "bot");
+          }
+        })
+        .catch(() => {
+          addMessage("⚠️ Error connecting to the server.", "bot");
+        });
     }
-
+  
     function startVoice() {
       const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
       recognition.lang = "en-US";
@@ -94,6 +123,7 @@
       };
     }
   </script>
+  
 
 </body>
 </html>

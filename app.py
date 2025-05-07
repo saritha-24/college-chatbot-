@@ -8,9 +8,10 @@ import difflib
 app = Flask(__name__)
 app.secret_key = "your-secret-key"
 
-# Load intents
-with open("intents.json") as f:
-    intents = json.load(f)["intents"]
+# Load intents with UTF-8 encoding to avoid UnicodeDecodeError
+with open('intents.json', encoding='utf-8') as f:
+    intents_data = json.load(f)
+    intents = intents_data['intents']
 
 # DB setup
 def init_db():
@@ -83,7 +84,7 @@ def logout():
     flash("You have been logged out.", "success")
     return redirect(url_for("login"))
 
-# ✅ Chatbot Page (was home before, now renamed to /chat)
+# ✅ Chatbot Page
 @app.route("/chat")
 def chat():
     if "user" not in session:
@@ -91,7 +92,7 @@ def chat():
         return redirect(url_for("login"))
     return render_template("index.html")
 
-# ✅ Chatbot Response
+# ✅ Chatbot Response — return all responses
 @app.route("/get")
 def chatbot_response():
     user_msg = request.args.get("msg", "").lower()
@@ -107,10 +108,16 @@ def chatbot_response():
                 best_match = intent
 
     if best_score > 0.6:
-        return jsonify({"reply": random.choice(best_match["responses"])})
+        return jsonify({
+            "tag": best_match["tag"],
+            "patterns": best_match["patterns"],
+            "responses": best_match["responses"]  # ✅ return all responses
+        })
 
-    return jsonify({"reply": "Sorry, I didn't understand that. Please try again or contact support."})
+    return jsonify({
+        "reply": "Sorry, I didn't understand that. Please try again or contact support."
+    })
 
-# ✅ Run server
+# ✅ Run Flask App
 if __name__ == "__main__":
     app.run(debug=True)
